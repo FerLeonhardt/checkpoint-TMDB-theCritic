@@ -1,0 +1,61 @@
+### REGISTER
+
+POST http://localhost:3001/api/register
+Content-Type: application/json
+
+{
+"name":"valentina",
+"userName":"vcastagnari",
+"lastName":"castagnari",
+"password":"rojoCampeon"
+}
+
+
+### USER BY ID
+
+GET http://localhost:3001/api/users/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidXNlck5hbWUiOiJzb2Zpc2l0IiwiaWF0IjoxNjQ2MDU2NDU1LCJleHAiOjE2NDYxNDI4NTV9.tlC19mnGefnjiPRUbnbnPNn1x4vVTRSrIV9-QsP7pPc
+
+### ALL USERS
+
+GET http://localhost:3001/api/users
+
+
+### USERS BY userName
+
+GET http://localhost:3001/api/users?userName=ernesto2@buiatti2
+
+### CREATE FAVORITE
+
+POST http://localhost:3001/api/favorites
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlck5hbWUiOiJ2Y2FzdGFnbmFyaSIsImlhdCI6MTY0NjQxMDUwNywiZXhwIjoxNjQ2NDk2OTA3fQ.dXQvc8cm4nzBpvra-2MkggTM3h8az5K_28JRcL1rM_w
+
+{
+"name": "top gun",
+"url_image":"no hay img",
+"tmdbId":"550"
+}
+
+### LOGIN
+
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{       
+    "userName":"vcastagnari",
+    "password":"rojoCampeon"
+        }
+### LOGIN
+
+
+### auth
+
+GET http://localhost:3001/api/auth
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlck5hbWUiOiJ2Y2FzdGFnbmFyaSIsImlhdCI6MTY0NjA2MDI4NSwiZXhwIjoxNjQ2MTQ2Njg1fQ.VF6xaXDqxmYU2oczr_PUBMTAGidiYqaJGU-NozJ-nsg
+
+
+### auth
+GET http://localhost:3001/api/logout
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlck5hbWUiOiJ2Y2FzdGFnbmFyaSIsImlhdCI6MTY0NjA2MDI4NSwiZXhwIjoxNjQ2MTQ2Njg1fQ.VF6xaXDqxmYU2oczr_PUBMTAGidiYqaJGU-NozJ-nsg
+

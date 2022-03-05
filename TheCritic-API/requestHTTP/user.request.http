@@ -1,0 +1,13 @@
+### USER BY ID
+
+GET http://localhost:3001/api/users/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidXNlck5hbWUiOiJzb2Zpc2l0IiwiaWF0IjoxNjQ2MDU2NDU1LCJleHAiOjE2NDYxNDI4NTV9.tlC19mnGefnjiPRUbnbnPNn1x4vVTRSrIV9-QsP7pPc
+
+### ALL USERS
+
+GET http://localhost:3001/api/users
+
+
+### USERS BY userName
+
+GET http://localhost:3001/api/users?userName=

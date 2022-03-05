@@ -11,6 +11,7 @@ const Favorites = ({ history, location }) => {
   const getMyFavorite = async () => {
     try {
       const favoriteList = await Axios.get(`/favorites`);
+      console.log("favorite list", favoriteList.data)
       setFavorites(favoriteList.data);
     } catch (error) {
       console.log(error);

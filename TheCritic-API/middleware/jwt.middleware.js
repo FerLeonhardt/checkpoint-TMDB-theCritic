@@ -1,4 +1,4 @@
-// algo que s emete en el medio de la declaracion de la ruta y ejecuta su ruta. en este caso, las rutas y los controllers.
+// algo que se mete en el medio de la declaracion de la ruta y ejecuta su ruta. en este caso, las rutas y los controllers.
 // vamos a procesar la info que viene de la request y nosotros le vamos a agregar un dato para el controller.
 
 const { User } = require('../Models/index');
@@ -10,7 +10,7 @@ const verifyToken = async (req, res, next) => {
   //como es un middleware, tiene estos parametros.
   //try y catch es lo que siempre voy a hacer cuando hago una petision.
   try {
-    const token = req.headers.authorization.split("Bearer ").join('')
+    const token = req.headers.authorization.split("Bearer ").join('')// 'bearer ' como lo genera asi, le cortamos esta plabra.
     //console.log('token:', token);
     if (!token)
       return res.status(200).send({ msg: 'Token no provisto', token: null }); // hacemos un condicional simple, para no perder tiempo.

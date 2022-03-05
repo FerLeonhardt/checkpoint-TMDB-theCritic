@@ -3,29 +3,35 @@
 
 const { User, Favorite } = require('../Models/index');
 
-
 //Encontrar todos los Users
-const findUsers = (req, res, next) => {
-  let query = {}; // es la forma de agregar querys
-  const { userName } = req.query;
-  if (userName) {
-    query.userName = userName; // le asiqnamos  q query, nuestro objeto vacio, un nuevo valor. esto es si hay muchos query
+const findUsers = async (req, res, next) => {
+  try {
+    let query = {}; // es la forma de agregar querys
+    const { userName } = req.query;
+    if (userName) query.userName = userName; // le asiqnamos  q query, nuestro objeto vacio, un nuevo valor. esto es si hay muchos query
+
+    const users = await User.findAll({ where: query, include: Favorite });
+    if (users.length) return res.status(200).send(users);
+    else return res.status(404).send({ msg: 'user-users not found' });
+  } catch (error) {
+    return res.status(500).send(error);
   }
-  User.findAll({ where: query, include: Favorite }).then(users => {
-    res.send(users);
-  });
 };
 
 //Encontrar un User por su id
-const getUserById = (req, res) => {
-  const id = req.params.id;
-  User.findOne({
-    where: { id },
-    attributes: ['userName', 'id'],
-    include: Favorite, //me va a mostrar esto, nada mas.
-  }).then(user => {
-    user ? res.send(user) : res.sendStatus(404);
-  });
+const getUserById = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const user = await User.findOne({
+      where: { id },
+      attributes: ['userName', 'id'],
+      include: Favorite, //me va a mostrar esto, nada mas.
+    });
+    if (user?.id) return res.status(200).send(user);
+    else return res.status(404).send({ msg: 'user not found' });
+  } catch (error) {
+    return res.status(500).send(error);
+  }
 };
 
-module.exports = {findUsers, getUserById };
+module.exports = { findUsers, getUserById };

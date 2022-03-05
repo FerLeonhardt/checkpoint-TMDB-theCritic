@@ -14,7 +14,6 @@ const Navbar = ({ history }) => {
 
   //const url = 'http://localhost:3001/api';
 
-  
   const logOutHandler = async e => {
     try {
       const exit = await Axios.get('/logout');
@@ -35,16 +34,17 @@ const Navbar = ({ history }) => {
       console.log('userSearch', userSearch);
       const user = await Axios.get(`/users?userName=${userSearch}`);
 
-      console.log(user.data);
+      console.log('user.data', user.data);
       if (user?.data[0]?.id) {
-        //er ? evalua si existe la key y el value. cuando en un objeto hay dentro varios campos.
-
+        //el ? evalua si existe la key y el value. cuando en un objeto hay dentro varios campos.
         dispatch(setUser(user.data[0]));
-
         history.push(`/users`); // ojo ferchu, esto no agrega a un array, esto t elleva a una ruta que elija.
-      } else console.log(`pase por caja, pague e intente denuveo`);
+      }
     } catch (error) {
-      console.log(error);
+      dispatch(setUser(null));
+      history.push(`/users`); // ojo ferchu, esto no agrega a un array, esto t elleva a una ruta que elija.
+
+      console.log(`pase por caja, pague e intente denuveo`);
     }
   };
 

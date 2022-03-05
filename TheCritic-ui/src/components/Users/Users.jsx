@@ -4,7 +4,7 @@ import userLogInToLogged from '../../utils/logged';
 
 const Users = ({ history, location }) => {
   const { user } = useSelector(state => state.user);
-
+console.log("usuario logueado ", user);
   useEffect(() => {
     userLogInToLogged(history, location);
   }, []);
@@ -13,18 +13,20 @@ const Users = ({ history, location }) => {
     <div>
       <div>
         <h1> Users</h1>
-        <div className='card' style={{ width: '18rem' }}>
-          <h2>{user?.userName}</h2>
-          <h2>favorites:</h2>
-          <ul className='list-group list-group-flush'>
+        {user?.userName && <div className='card' style={{ width: '500px' }}>
+          <h2>{user?.userName} favorites:</h2>
+                    <ul className='list-group list-group-flush'>
             {user?.favorites?.map(favorite => (
               <li className='list-group-item'>
+                <div  className='d-flex justify-content-between align-items-center' >
                 <h3>{favorite?.name}</h3>
-                <img src={favorite?.url_image} />
+                <img  style={{ maxHeight: '150px' }} src={favorite?.url_image} />
+                </div>
               </li>
             ))}
           </ul>
-        </div>
+        </div>}
+      {!user?.userName &&<div>USER NOT FOUND</div>}
       </div>
     </div>
   );

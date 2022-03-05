@@ -2,7 +2,7 @@
 // aca vamos acrear los modelos para las tablas de la db.
 const S = require('sequelize');
 const db = require('../Config/db');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');// antes instalamos la libreria
 
 class User extends S.Model {}
 
@@ -26,7 +26,7 @@ User.init(
       type: S.STRING,
       allowNull: false, // aca con false, no permitimos que quede vacio este campo.
       validate: {
-        is: "^[A-Za-z]+((s)?(('|-|.)?([A-Za-z])+))*$", //passport.-
+        is: "^[A-Za-z]+((s)?(('|-|.)?([A-Za-z])+))*$",// mediante una expresion regular
       }, 
     },
     salt: {
@@ -52,8 +52,8 @@ User.beforeCreate(user => {
   return bcrypt
     .genSalt(16) //genSalt son las capas q va a utilizar para hacer el hash
     .then(salt => {
-      user.salt = salt; // user.salt se refiere s insertarlo en el modelo de la tabla
-      return bcrypt.hash(user.password, user.salt); //user.hash() conviierte en un string irreconosible el string que yo le paso.
+      user.salt = salt; // user.salt se refiere insertarlo en el modelo de la tabla
+      return bcrypt.hash(user.password, user.salt); //user.hash() convierte en un string irreconosible el string que yo le paso.
     })
     .then(hash => {
       user.password = hash; //reemplazo el password del model perteneciente al usuario, lo reemplaza por la hash creada.

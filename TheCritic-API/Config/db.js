@@ -1,9 +1,9 @@
 //aca es donde cree la database
-const Sequelize = require("sequelize");
+const Sequelize = require("sequelize"); // es un orm para trabajar con db relacionales (manejador de base de datos)
 
-const db = new Sequelize("theCritic", null, null, {
+const db = new Sequelize("theCritic", null, null, { //null (nombre del usuario), null (password), si lo configuramos para q existan, son strings
   host: "localhost",
-  dialect: "postgres",
+  dialect: "postgres", // mySql, mariaDB 
   logging: false,// no muetsra el pordetras de como trabaja las tablas de la base de datos.
 });
 

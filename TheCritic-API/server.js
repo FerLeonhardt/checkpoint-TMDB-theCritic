@@ -7,10 +7,11 @@ const express = require('express'); //libreria de node.js
 const app = express(); //mediante la variable app, ejecuto express, por eso poniendo app.algo puedo usar la herramientas de express
 const db = require('./Config/db'); // requiero la db, que hice en config para sincronizarla con los metodos de sequilize.
 const routes = require('./Routes/index.js'); // requerimos las rutas que las tenemos en otro lado, estas rutas me van a permitir navegar enytre funcionalidades.
-const cors = require('cors'); // lo requerimos porque necesitamos las peticiones.
+const cors = require('cors'); // lo requerimos porque necesitamos las peticiones. me deja trabajar de modo local server y front end mientras estoy desarrollando.
 //app.use es un metodo que me permite usar las herramientas de expres.
 const morgan = require('morgan');
 //automaticamente por consola, muestra las peticiones del back al front
+
 app.use(cors());
 app.use(express.json()); // esto me traduce la info que viene como string para que javaScript lo interprete.
 app.use(express.urlencoded({ extended: true })); // urlencoded es algo que me pide express por un problema interno. SI O SI TIENE Q ESTAR
@@ -18,7 +19,7 @@ app.use(express.urlencoded({ extended: true })); // urlencoded es algo que me pi
 app.use('/api', routes);
 // http://locahost:3001/api
 //Aca estoy diciendo que voy a usar las routes con las herramientas de express
-app.use(morgan('tiny'));
+app.use(morgan('tiny'));// se escribe con tiny, es una opcion de la nomenclatura
 
 const PORT = 3001;
 

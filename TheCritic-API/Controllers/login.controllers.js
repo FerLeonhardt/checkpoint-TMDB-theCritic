@@ -8,22 +8,27 @@ const jwtSecret = 'secret'; // esto lo pongo para comparar cuando genero el toke
 
 
 const login = async (req, res) => {
+  try {
+    
+    const { userName, password } = req.body; //desestructuro la info qu eme viene por el body.
   
-  const { userName, password } = req.body; //desestructuro la info qu eme viene por el body.
-
-  const user = await User.findOne({ where: { userName } }); // await, le dice a user, 'vamos a esperar hasta que se resuleva, una vez q se resuelve, te guardo en user'
+    const user = await User.findOne({ where: { userName } }); // await, le dice a user, 'vamos a esperar hasta que se resuleva, una vez q se resuelve, te guardo en user'
+    
+    if (!user)return  res.status(200).send({ msg: 'UserName or password not matched' });
   
-  if (!user)return  res.status(200).send({ msg: 'UserName or password not matched' });
-
-  const matchPass = bcrypt.compare(password, user.password);
-
-  if (!matchPass)
-    return res.status(200).send({ msg: 'UserName or password not matched' });
-
-  const { id } = user;
-  const token = jwt.sign({ id, userName }, jwtSecret, { expiresIn: 86400 });
-  console.log(token);
-  return res.status(200).send({ token });
+    const matchPass = bcrypt.compare(password, user.password);
+  
+    if (!matchPass)
+      return res.status(200).send({ msg: 'UserName or password not matched' });
+  
+    const { id } = user;
+    const token = jwt.sign({ id, userName }, jwtSecret, { expiresIn: 86400 });
+    /* console.log(token); */
+    return res.status(200).send({ token });
+  
+  } catch (error) {
+    return res.status(500).send(error);  
+  }
 }; 
 
 module.exports = { login }; //exporto con corchetes 

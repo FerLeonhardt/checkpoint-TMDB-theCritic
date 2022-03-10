@@ -11,7 +11,6 @@ const Favorites = ({ history, location }) => {
   const getMyFavorite = async () => {
     try {
       const favoriteList = await Axios.get(`/favorites`);
-      console.log("favorite list", favoriteList.data)
       setFavorites(favoriteList.data);
     } catch (error) {
       console.log(error);
@@ -21,7 +20,9 @@ const Favorites = ({ history, location }) => {
   const deleteFav = async id => {
     try {
       const deleted = await Axios.delete(`/favorites/${id}`);
-      if (deleted) getMyFavorite();
+console.log("deleted", deleted);
+      if (deleted.data) getMyFavorite();
+
       else
         console.log(
           `esta peli, es toxic@, no se va ni te va a dejar de llamar!`

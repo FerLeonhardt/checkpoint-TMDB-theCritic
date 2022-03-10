@@ -25,9 +25,9 @@ User.init(
     password: {
       type: S.STRING,
       allowNull: false, // aca con false, no permitimos que quede vacio este campo.
-      validate: {
+      /* validate: {
         is: "^[A-Za-z]+((s)?(('|-|.)?([A-Za-z])+))*$",// mediante una expresion regular
-      }, 
+      },  */
     },
     salt: {
       //se usa por dentro para el hook beforeCreate para el hasheo, vamos a guardar la cantidad de capas

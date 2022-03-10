@@ -33,8 +33,7 @@ const findFavorite = async (req, res) => {
       attributes: ['name', 'id', `url_image`],
     });
 
-    if (favorites.length) return res.status(200).send(favorites);
-    else return res.status(404).send([{ msg: 'favortie not found' }]);
+    /* if (favorites.length)  */return res.status(200).send(favorites);
   } catch (error) {
     return res.status(500).send(error);
   }

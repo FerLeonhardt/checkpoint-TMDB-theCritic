@@ -14,8 +14,11 @@ const Register = ({history}) => {
   const submitHandler = async e => {
     e.preventDefault();
     try {
+      console.log("inputs",inputs);
       const userCreated = await Axios.post(`/register`, inputs);
-      if (userCreated) {
+      console.log("user Created",userCreated);
+      
+      if (userCreated.data.id) {
         console.log('ahora sos un Critic.');
         history.push(`/`);
       } else console.log('no tenes zapatos, no podes entrar');

@@ -4,26 +4,29 @@ POST http://localhost:3001/api/register
 Content-Type: application/json
 
 {
-"name":"valentina",
-"userName":"vcastagnari",
-"lastName":"castagnari",
+"name":"mar",
+"userName":"laWizard",
+"lastName":"cortina",
 "password":"rojoCampeon"
 }
 
 
 ### USER BY ID
 
-GET http://localhost:3001/api/users/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidXNlck5hbWUiOiJzb2Zpc2l0IiwiaWF0IjoxNjQ2MDU2NDU1LCJleHAiOjE2NDYxNDI4NTV9.tlC19mnGefnjiPRUbnbnPNn1x4vVTRSrIV9-QsP7pPc
+GET http://localhost:3001/api/users/6
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlck5hbWUiOiJ2Y2FzdGFnbmFyaSIsImlhdCI6MTY0NjQxMDUwNywiZXhwIjoxNjQ2NDk2OTA3fQ.dXQvc8cm4nzBpvra-2MkggTM3h8az5K_28JRcL1rM_w
 
 ### ALL USERS
 
 GET http://localhost:3001/api/users
+Authorization: Bearer $2b$16$5ZaVmOFlxxexoipUaqHIMeoH47fxipaN08cMj67P20QTCpEIV.BlC
 
 
 ### USERS BY userName
 
-GET http://localhost:3001/api/users?userName=ernesto2@buiatti2
+GET http://localhost:3001/api/users?userName=laWizard
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlck5hbWUiOiJsYVdpemFyZCIsImlhdCI6MTY0NjkxNTk5NCwiZXhwIjoxNjQ3MDAyMzk0fQ.Is-yoop8EDaLN6VHpqp3mJgGsfXKzpWKVIjQkRr7sLg
+
 
 ### CREATE FAVORITE
 
@@ -43,8 +46,8 @@ POST http://localhost:3001/api/login
 Content-Type: application/json
 
 {       
-    "userName":"vcastagnari",
-    "password":"rojoCampeon"
+    "userName":"laWizard",
+    "password":"123456"
         }
 ### LOGIN
 
